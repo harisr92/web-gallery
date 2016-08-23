@@ -1,3 +1,12 @@
-<%= provide(:title, @user.name) %>
-<%= image_tag @user.avatar.url(:thumb) %>
-<%= @user.name %>, <%= @user.email %>
+<% provide(:title, @user.name) %>
+
+<div class="col-md-8">
+  <% if @user.images.any? %>
+    <h3>Uploads (<%= @user.images.count %>)</h3>
+    <ol class="images">
+      <%= render @images %>
+    </ol>
+    <%= will_paginate @images %>
+  <% end %>
+</div>
+</div>

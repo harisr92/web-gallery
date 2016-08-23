@@ -1,0 +1,21 @@
+<% if @image.any? %>
+<ul class="images">
+    <% @image.each do |im| %>
+    <li>
+        <a href="#">
+            <%= image_tag(im.photo. url(:medium))%>
+            <h4><%= im.title %></h4>
+        </a>
+        <span class="timestamp">
+            Uploaded
+            <%= time_ago_in_words(im.created_at) %>
+            ago.
+            <% if current_user?(im.user) %>
+            <%= link_to "delete", im, method: :delete,
+                                       data: { confirm: "You sure?" } %>
+            <% end %>
+        </span>
+    </li>
+    <% end %>
+</ul>
+<% end %>

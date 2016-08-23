@@ -84,3 +84,74 @@ input {
         color: $state-danger-text;
     }
 }
+/* sidebar */
+aside {
+    section.user_info {
+        margin-top: 20px;
+    }
+    section {
+        padding: 10px 0;
+        margin-top: 20px;
+        &:first-child {
+            border: 0;
+            padding-top: 0;
+        }
+        span {
+            display: block;
+            margin-bottom: 3px;
+            line-height: 1;
+        }
+        h1 {
+            font-size: 1.4em;
+            text-align: left;
+            letter-spacing: -1px;
+            margin-bottom: 3px;
+            margin-top: 0;
+        }
+    }
+}
+.avatar {
+    float: left;
+    margin-right: 10px;
+}
+.avatar_edit {
+    margin-top: 15px;
+}
+
+.images {
+    list-style: none;
+    padding: 0;
+    li {
+        padding: 10px 0;
+        border-top: 1px solid #e8e8e8;
+        h4{
+          text-align: center;
+        }
+        a{
+          text-decoration: none;
+        }
+    }
+    .timestamp {
+        color: $gray-light;
+        display: block;
+    }
+}
+aside {
+    textarea {
+        height: 100px;
+        margin-bottom: 5px;
+    }
+}
+span.picture {
+    margin-top: 10px;
+    input {
+        border: 0;
+    }
+}
+
+ul.images li {
+    width: 200px;
+    margin-top: 20px;
+    margin-left: 20px;
+    display: inline-block;
+}

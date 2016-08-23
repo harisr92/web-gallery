@@ -3,7 +3,11 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails',  '>= 5.0.0.1'
+gem 'will_paginate',           '3.1.0'
+gem 'bootstrap-will_paginate', '0.0.10'
 gem 'paperclip'
+gem "wice_grid", '3.6.0.pre4'
+gem 'font-awesome-sass',  '~> 4.3'
 gem 'bcrypt',         '3.1.11'
 gem 'bootstrap-sass', '3.3.6'
 # Use sqlite3 as the database for Active Record

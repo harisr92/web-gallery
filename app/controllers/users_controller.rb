@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @images =@user.images.paginate(page: params[:page])
   end
 
   def create
@@ -12,7 +13,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "Welcome to web gallery"
-      redirect_to @user
+      redirect_to root_url
     else
       render 'new'
     end
