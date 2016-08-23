@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, only: [:edit, :update, :delete]
+  before_action :correct_user, only: [:edit, :update, :delete]
+
   def new
     @user = User.new
   end
@@ -19,8 +22,40 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:success] = "Profile Updated"
+      redirect_to root_url
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "User deleted"
+    redirect_to root_url
+  end
+
   private
     def user_params
       params.require("user").permit(:name, :avatar, :email, :password, :password_confirmation)
+    end
+
+    def logged_in_user
+      unless logged_in?
+        flash[:danger] = "Please Login"
+        redirect_to login_url
+      end
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)
     end
 end
