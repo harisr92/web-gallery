@@ -5,16 +5,16 @@ class ImagesController < ApplicationController
     def create
         @images = current_user.images.build(photo_params)
         if @images.save
-            redirect_to root_url
+            render 'shared/image_form'
         else
-            flash[:danger] = 'Upload error!'
-            redirect_to root_url
+            #flash[:danger] = 'Upload error!'
+            redirect_to root_url, data: {alert: 'Upload error'}
         end
     end
 
     def destroy
         @images.destroy
-        flash[:success] = 'Image deleted'
+        flash.now[:success] = 'Image deleted'
         redirect_to request.referrer || root_url
     end
 

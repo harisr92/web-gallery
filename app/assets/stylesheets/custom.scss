@@ -117,18 +117,17 @@ aside {
 .avatar_edit {
     margin-top: 15px;
 }
-
 .images {
     list-style: none;
     padding: 0;
     li {
         padding: 10px 0;
         border-top: 1px solid #e8e8e8;
-        h4{
-          text-align: center;
+        h4 {
+            text-align: center;
         }
-        a{
-          text-decoration: none;
+        a {
+            text-decoration: none;
         }
     }
     .timestamp {
@@ -148,16 +147,30 @@ span.picture {
         border: 0;
     }
 }
-
 ul.images li {
     width: 200px;
     margin-top: 20px;
     margin-left: 20px;
     display: inline-block;
 }
+.btn-danger a {
+    text-decoration: none;
+    text-decoration-style: solid;
+    color: black;
+}
+#myProgress {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    background-color: grey;
+}
+#myBar {
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    background-color: green;
+}
 
-.btn-danger a{
-  text-decoration: none;
-  text-decoration-style: solid;
-  color: black;
+.progress{
+  margin-top: 10px;
 }

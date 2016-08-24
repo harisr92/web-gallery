@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :images, dependent: :destroy
-  before_save :downcase
+  before_save :downcase_email
   has_attached_file :avatar, :styles => { :medium => "200x200", :thumb => "100x100" }, :default_url => "missing.png"
   validates_attachment_content_type :avatar, content_type: %w(image/jpeg image/jpg image/png)
   validates :name, presence: true, length: {maximum: 50}
@@ -13,11 +13,11 @@ class User < ApplicationRecord
   validates :password, presence: true, length: {minimum: 6}
 
   def feed
-    Image.where("user_id = ?", id)
+    self.images
   end
 
   private
-    def downcase
+    def downcase_email
       self.email.downcase
     end
 end

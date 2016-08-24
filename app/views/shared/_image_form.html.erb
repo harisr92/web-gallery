@@ -4,7 +4,12 @@
     <%= f.text_field :title,  class: 'form-control'%>
 
     <%= f.label :photo %>
-    <%= f.file_field :photo, class: 'form-control'%>
-
-  <%= f.submit 'Upload', class: 'btn btn-primary' %>
+    <%= f.file_field :photo, class: 'form-control',name: 'image[photo]' %>
 <% end %>
+
+
+<div class="progress">
+  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+    <span id="progBarMsg"></span>
+  </div>
+</div>

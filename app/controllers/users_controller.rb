@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @images =@user.images.paginate(page: params[:page])
+    @images = @user.images.paginate(page: params[:page])
   end
 
   def create
