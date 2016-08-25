@@ -3,6 +3,10 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
+    sleep = (ms) ->
+        start = new Date().getTime()
+        continue while new Date().getTime() - start < ms
+
     $('#image_photo').attr('name','image[photo]')
     $('#new_image').fileupload
         dataType: 'script'
@@ -14,7 +18,10 @@ jQuery ->
             else
                 alert("#{file.name} is not a gif, jpg or png image file")
         progress: (e, data) ->
-                #e.preventDefault()
-                window.scrollTo(0, 0)
-                progress = parseInt(data.loaded / data.total * 100, 10)
-                $("#progBarMsg").parent().css("width", progress+'%').attr('aria-valuenow', progress)
+            e.preventDefault()
+            window.scrollTo(0, 0)
+            progress = parseInt(data.loaded / data.total * 100, 10)
+            $("#progBarMsg").parent().css("width", progress+'%').attr('aria-valuenow', progress)
+            if progress == 100
+              sleep 1000
+              document.location = "http://localhost:3000"
