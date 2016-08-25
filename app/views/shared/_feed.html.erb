@@ -2,10 +2,10 @@
 <ul class="images">
     <% @image.each do |im| %>
     <li>
-        <a href="#">
-            <%= image_tag(im.photo. url(:medium))%>
+        <%= link_to(im) do %>
+            <%= image_tag(im.photo.url(:medium), :class => 'avatar') %>
             <h4><%= im.title %></h4>
-        </a>
+        <% end %>
         <span class="timestamp">
             Uploaded
             <%= time_ago_in_words(im.created_at) %>

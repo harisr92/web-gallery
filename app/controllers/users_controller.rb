@@ -2,13 +2,17 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:edit, :update, :delete]
   before_action :correct_user, only: [:edit, :update, :delete]
 
+  def index
+    @users = User.paginate(page: params[:page])
+  end
+
   def new
     @user = User.new
   end
 
   def show
     @user = User.find(params[:id])
-    @images = @user.images.paginate(page: params[:page])
+    @image = @user.images.order(:created_at)
   end
 
   def create

@@ -1,6 +1,5 @@
-<%= image_tag(current_user.avatar.url(:thumb)) %>
+<%= image_tag(current_user.avatar.url(:thumb), :class => 'avatar') %>
 <h1>
     <%= current_user.name %>
 </h1>
 <span><%= pluralize(current_user.images.count, "Image") %></span>
-<%= button_to('Delete', current_user, method: :delete, data: { confirm: "You sure?" }, :class => 'btn btn-danger')  %>

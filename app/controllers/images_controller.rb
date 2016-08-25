@@ -2,10 +2,16 @@ class ImagesController < ApplicationController
     before_action :logged_in_user, only: [:create, :destroy]
     before_action :correct_user, only: :destroy
 
+    def show
+      @image = Image.find(params[:id])
+      @comments = @image.comments.paginate(page: params[:page])
+      @comment = @image.comments.build if logged_in?
+    end
+
     def create
         @images = current_user.images.build(photo_params)
         if @images.save
-            render 'shared/image_form'
+            render :partial => 'shared/feed'
         else
             #flash[:danger] = 'Upload error!'
             redirect_to root_url, data: {alert: 'Upload error'}

@@ -14,7 +14,7 @@ jQuery ->
             else
                 alert("#{file.name} is not a gif, jpg or png image file")
         progress: (e, data) ->
-                e.preventDefault()
+                #e.preventDefault()
                 window.scrollTo(0, 0)
                 progress = parseInt(data.loaded / data.total * 100, 10)
                 $("#progBarMsg").parent().css("width", progress+'%').attr('aria-valuenow', progress)

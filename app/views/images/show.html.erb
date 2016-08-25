@@ -1,0 +1,31 @@
+<% provide(:title, 'Image') %>
+<div class="row">
+    <aside class="col-md-4">
+        <section class="user_info">
+            <%= image_tag(@image.photo.url(:medium), :class => 'avatar') %>
+            <h1>
+                <%= @image.title %>
+            </h1>
+        </section>
+        <section class="images_form">
+            <%= form_for(@comment) do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
+            <%= f.label :content, "Content" %>
+            <%= f.hidden_field :image_id %>
+            <%= f.text_field :content,  class: 'form-control text'%>
+            <%= f.submit "Post", class: "btn btn-primary" %>
+            <% end %>
+        </section>
+    </aside>
+    <div class="col-md-8">
+        <% if @image.comments.any? %>
+        <h3><%= @image.comments.count %>
+            comments
+        </h3>
+        <ul class="images">
+            <%= render @comments %>
+        </ul>
+        <%= will_paginate @comments %>
+        <% end %>
+    </div>
+</div>

@@ -1,12 +1,24 @@
 <% provide(:title, @user.name) %>
-
-<div class="col-md-8">
-  <% if @user.images.any? %>
-    <h3>Uploads (<%= @user.images.count %>)</h3>
-    <ol class="images">
-      <%= render @images %>
-    </ol>
-    <%= will_paginate @images %>
-  <% end %>
-</div>
+<div class="row">
+    <aside class="col-md-4">
+        <section class="user_info">
+            <h1>
+                <%= image_tag(@user.avatar.url(:thumb)) %>
+                <%= @user.name %>
+            </h1>
+            <span><%= pluralize(@user.images.count, "Image") %></span>
+        </section>
+    </aside>
+    <div class="col-md-8">
+        <% if @user.images.any? %>
+        <h3>Images (<%= @user.images.count %>)</h3>
+        <ol class="images">
+            <%= render 'shared/feed' %>
+        </ol>
+    <% else %>
+        <h2>
+            No Images Found
+        </h2>
+        <% end %>
+    </div>
 </div>
